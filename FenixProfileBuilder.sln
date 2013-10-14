@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GpfTools", "GpfTools\GpfTools.csproj", "{2BCCFCDC-DCB3-4F99-95B9-199A5B4A4B9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitHelpers", "GitHelpers\GitHelpers.csproj", "{66FA34F0-6C3D-433E-826E-17F98F21F9D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GpfEditor", "GpfEditor\GpfEditor.csproj", "{EE97C391-0084-4701-98E8-84520497A67C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2BCCFCDC-DCB3-4F99-95B9-199A5B4A4B9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BCCFCDC-DCB3-4F99-95B9-199A5B4A4B9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BCCFCDC-DCB3-4F99-95B9-199A5B4A4B9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BCCFCDC-DCB3-4F99-95B9-199A5B4A4B9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66FA34F0-6C3D-433E-826E-17F98F21F9D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66FA34F0-6C3D-433E-826E-17F98F21F9D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66FA34F0-6C3D-433E-826E-17F98F21F9D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66FA34F0-6C3D-433E-826E-17F98F21F9D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE97C391-0084-4701-98E8-84520497A67C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE97C391-0084-4701-98E8-84520497A67C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE97C391-0084-4701-98E8-84520497A67C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE97C391-0084-4701-98E8-84520497A67C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
