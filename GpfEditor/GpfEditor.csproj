@@ -60,11 +60,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Content\DataPages.xaml.cs">
+      <DependentUpon>DataPages.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\DataPagesViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\MainMenuViewModel.cs" />
     <Page Include="Content\BackupSettings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Content\DataPages.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -73,7 +81,7 @@
     <Compile Include="Content\BackupSettings.xaml.cs">
       <DependentUpon>BackupSettings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Content\BackupSettingsViewModel.cs" />
+    <Compile Include="ViewModels\BackupSettingsViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -120,6 +128,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GitHelpers\GitHelpers.csproj">
+      <Project>{66fa34f0-6c3d-433e-826e-17f98f21f9d5}</Project>
+      <Name>GitHelpers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GpfTools\GpfTools.csproj">
       <Project>{2bccfcdc-dcb3-4f99-95b9-199a5b4a4b9c}</Project>
       <Name>GpfTools</Name>

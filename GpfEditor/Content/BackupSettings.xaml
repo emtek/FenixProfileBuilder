@@ -11,6 +11,14 @@
             <StackPanel MinWidth="200">
                 <TextBlock Text="Backup Directory" Style="{StaticResource Heading2}" />
                 <TextBox Text="{Binding BackupDirectory, Mode=TwoWay}"/>
+                <Button Content="Backup Now" Command="{Binding BackupCommand}"/>
+                <ListBox ItemsSource="{Binding Backups}" SelectedItem="{Binding SelectedBackup}">
+                    <ListBox.ContextMenu>
+                        <ContextMenu Name="RightClickMenu">
+                            <MenuItem Header="Revert" Command="{Binding RevertCommand}" />
+                        </ContextMenu>
+                    </ListBox.ContextMenu>
+                </ListBox>
             </StackPanel>
         </ScrollViewer>
     </Grid>

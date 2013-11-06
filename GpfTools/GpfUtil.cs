@@ -30,14 +30,34 @@ namespace GpfTools
             return String.Empty;
         }
 
+
+        public static void BackupDeviceToRepository()
+        {
+
+            foreach (var file in Directory.GetFiles(GetBackupDirectory(), "*.gpf"))
+            {
+                File.Delete(file);
+                GitHelpers.GitBackup.Removefile(GetBackupDirectory(), Path.GetFileName(file));
+            }
+            foreach (var file in Directory.GetFiles(FindGarminDeviceDirectory(), "*.gpf"))
+            {
+                var fullPath = GetBackupDirectory() + "\\" + Path.GetFileName(file);
+                File.Copy(file, fullPath, true);
+                GitHelpers.GitBackup.Addfile(GetBackupDirectory(), fullPath);
+            }
+            GitHelpers.GitBackup.CommitChanges(GetBackupDirectory(), "Device Backup " + DateTime.Now);
+        }
+
         public static string GetBackupDirectory()
         {
-            return Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\FenixProfileBackup";
+            var backupDir = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\FenixBackup";
+            if (!Directory.Exists(backupDir)) Directory.CreateDirectory(backupDir);
+            return backupDir;
         }
 
         public static void SaveToDevice()
         {
-            SaveToRepository();
+            SaveToRepository("Pushed to device");
 
             foreach (var file in Directory.GetFiles(FindGarminDeviceDirectory(), "*.gpf"))
             {
@@ -50,7 +70,7 @@ namespace GpfTools
                 
         }
 
-        public static void SaveToRepository()
+        public static void SaveToRepository(string message = "Saved")
         {
             if (_profilesList != null)
             {
@@ -64,7 +84,7 @@ namespace GpfTools
                         serializer.Serialize(writer, tuple.Item2, ns);
                     }
                 }
-                GitHelpers.GitBackup.CommitChanges(GetBackupDirectory(), "Saved " + DateTime.Now);
+                GitHelpers.GitBackup.CommitChanges(GetBackupDirectory(), message + " " + DateTime.Now);
             }
         }
 
@@ -104,6 +124,7 @@ namespace GpfTools
                                                              serializer.Deserialize(fileStream) as Profile));
             }
             GitHelpers.GitBackup.Addfile(GetBackupDirectory(),file);
+            GitHelpers.GitBackup.CommitChanges(GetBackupDirectory(),"Added " + file);
         }
 
         public static void DeleteProfile(string name)
@@ -112,6 +133,7 @@ namespace GpfTools
             File.Delete(profile.Item1);
             _profilesList.Remove(profile);
             GitHelpers.GitBackup.Removefile(GetBackupDirectory(),profile.Item1);
+            GitHelpers.GitBackup.CommitChanges(GetBackupDirectory(), "Removed " + profile.Item1);
         }
     }
 }

@@ -22,23 +22,23 @@ namespace GpfEditor.ViewModels
         public MainMenuViewModel(string fileName)
         {
             _fileName = fileName;
-             _profileSettings = GpfTools.GpfUtil.ProfilesList().First(p => p.Item1.Contains(_fileName)).Item2.Items[0] as ProfileSettings;
+            _profileSettings = GpfTools.GpfUtil.ProfilesList().First(p => p.Item1.Contains(_fileName)).Item2.Items[0] as ProfileSettings;
             _selectedMainMenuItems = new ObservableCollection<MenuItem>();
             _availableMainMenuItems = new ObservableCollection<MenuItem>();
             foreach (var item in _profileSettings.MainMenu)
             {
-                _selectedMainMenuItems.Add(new MenuItem() { Id = int.Parse(item.Value), Value = Enums.MmItems[int.Parse(item.Value)], Selected = true});
+                _selectedMainMenuItems.Add(new MenuItem() { Id = int.Parse(item.Value), Value = Enums.MmItems[int.Parse(item.Value)], Selected = true });
             }
             foreach (var available in Enums.MmItems.Where(k => _selectedMainMenuItems.All(g => g.Id != k.Key)))
             {
-                _availableMainMenuItems.Add(new MenuItem() { Id = available.Key, Value = available.Value,Selected = false});
+                _availableMainMenuItems.Add(new MenuItem() { Id = available.Key, Value = available.Value, Selected = false });
             }
-            _selectedMainMenuItems.CollectionChanged +=_selectedMainMenuItems_CollectionChanged;
+            _selectedMainMenuItems.CollectionChanged += _selectedMainMenuItems_CollectionChanged;
         }
 
         private void _selectedMainMenuItems_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            _profileSettings.MainMenu = _selectedMainMenuItems.Select(s => new ProfileSettingsMainMenuMmItem(){ Value = s.Id.ToString()}).ToArray();
+            _profileSettings.MainMenu = _selectedMainMenuItems.Select(s => new ProfileSettingsMainMenuMmItem() { Value = s.Id.ToString() }).ToArray();
         }
 
         public ObservableCollection<MenuItem> SelectedMainMenuItems
@@ -111,7 +111,7 @@ namespace GpfEditor.ViewModels
             MenuItem targetItem = dropInfo.TargetItem as MenuItem;
             if (targetItem == null)
             {
-                
+
                 if (sourceItem.Selected)
                 {
                     _availableMainMenuItems.Add(sourceItem);

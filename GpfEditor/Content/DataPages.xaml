@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="GpfEditor.DataPages"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             xmlns:dd="clr-namespace:GongSolutions.Wpf.DragDrop;assembly=GongSolutions.Wpf.DragDrop" mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <Grid Style="{StaticResource ContentRoot}">
+        <Grid.ContextMenu>
+        <ContextMenu Name="menu">
+            <MenuItem Header="Add Data Page" Command="{Binding AddCommand}"/>
+            <MenuItem Header="Delete Data Page" Command="{Binding DeleteCommand}" />
+        </ContextMenu>
+        </Grid.ContextMenu>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="6"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ScrollViewer Margin="{StaticResource SplitLeft}">
+            <StackPanel MinWidth="200">
+                <TextBlock Text="Pages" Style="{StaticResource Heading2}"/>
+                <ListBox MinHeight="200" ItemsSource="{Binding SelectedDataPagesItems}" SelectedItem="{Binding SelectedDataPage}" dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True" >
+
+                </ListBox>
+            </StackPanel>
+        </ScrollViewer>
+        <GridSplitter Grid.Column="1" />
+        <ScrollViewer Grid.Column="2" Margin="{StaticResource SplitRight}">
+            <StackPanel MinWidth="200">
+                <TextBlock Text="Setup" Style="{StaticResource Heading2}"/>
+                <ComboBox ItemsSource="{Binding DataPageTypes}" SelectedItem="{Binding SelectedPageType}"/>
+                <ComboBox ItemsSource="{Binding DataField1Types}" SelectedItem="{Binding SelectedPageField1}" Visibility="{Binding Field1Vis}"/>
+                <ComboBox ItemsSource="{Binding DataField3Types}" SelectedItem="{Binding SelectedPageField3}" Visibility="{Binding Field3Vis}"/>
+                <ComboBox ItemsSource="{Binding DataField2Types}" SelectedItem="{Binding SelectedPageField2}" Visibility="{Binding Field2Vis}"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

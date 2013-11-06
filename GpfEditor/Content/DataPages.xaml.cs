@@ -13,28 +13,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using FirstFloor.ModernUI.Windows;
-using FirstFloor.ModernUI.Windows.Controls;
-using FirstFloor.ModernUI.Windows.Navigation;
 using GpfEditor.ViewModels;
+using GpfTools.GpfFile;
 using FragmentNavigationEventArgs = FirstFloor.ModernUI.Windows.Navigation.FragmentNavigationEventArgs;
 using NavigatingCancelEventArgs = FirstFloor.ModernUI.Windows.Navigation.NavigatingCancelEventArgs;
 using NavigationEventArgs = FirstFloor.ModernUI.Windows.Navigation.NavigationEventArgs;
 
-namespace GpfEditor.Pages
+namespace GpfEditor
 {
     /// <summary>
-    /// Interaction logic for Home.xaml
+    /// Interaction logic for Profiles.xaml
     /// </summary>
-    public partial class Home : UserControl, IContent
+    public partial class DataPages : UserControl, IContent
     {
-
-        public Home()
+        public DataPages()
         {
             InitializeComponent();
-            this.DataContext = new HomeViewModel("MainMenu");
-            
         }
-
 
         /// <summary>
         /// Called when navigation to a content fragment begins.
@@ -42,7 +37,7 @@ namespace GpfEditor.Pages
         /// <param name="e">An object that contains the navigation data.</param>
         public void OnFragmentNavigation(FragmentNavigationEventArgs e)
         {
-            
+
         }
 
         /// <summary>
@@ -51,9 +46,8 @@ namespace GpfEditor.Pages
         /// <param name="e">An object that contains the navigation data.</param>
         public void OnNavigatedFrom(NavigationEventArgs e)
         {
-            
-        }
 
+        }
 
         /// <summary>
         /// Called when a this instance becomes the active content in a frame.
@@ -64,7 +58,7 @@ namespace GpfEditor.Pages
             if (e.Source.OriginalString != null)
             {
                 var file = e.Source.OriginalString.Split('=').Last();
-                this.DataContext = new HomeViewModel(file);
+                this.DataContext = new DataPagesViewModel(file);
             }
         }
 
@@ -77,7 +71,7 @@ namespace GpfEditor.Pages
         /// </remarks>
         public void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
-            
+
         }
     }
 }

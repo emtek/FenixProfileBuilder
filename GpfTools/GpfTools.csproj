@@ -43,6 +43,7 @@
     <Compile Include="Enums.cs" />
     <Compile Include="Gpf.cs" />
     <Compile Include="GpfUtil.cs" />
+    <Compile Include="Partials.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -50,6 +51,9 @@
       <Project>{66fa34f0-6c3d-433e-826e-17f98f21f9d5}</Project>
       <Name>GitHelpers</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ProfileMappings\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
